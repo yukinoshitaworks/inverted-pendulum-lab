@@ -231,6 +231,8 @@ footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-si
 .ref-tags{display:flex;flex-wrap:wrap;gap:5px;margin:5px 0 3px}
 .ref-tags span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.04em;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:1px 7px}
 .ref-why{font-size:12px;color:var(--muted);line-height:1.55}
+.refs h3{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:22px 0 12px;padding-top:16px;border-top:1px solid var(--line)}
+.refs h3:first-of-type{margin-top:0;padding-top:0;border-top:none}
 
 /* 4パネル整列 */
 @media (min-width:760px) and (max-width:1199px){
@@ -485,7 +487,8 @@ footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-si
   <!-- REFERENCES -->
   <div class="panel refs">
     <h2>参考文献 — さらに深く学ぶために</h2>
-    <p class="sub">このラボで扱ったPID・状態空間モデルに加え、その先にあるLQR（最適レギュレータ）やスイングアップ制御、シミュレーションの数値積分まで、定番の文献を選びました。</p>
+    <p class="sub">このラボで扱ったPID・状態空間モデルに加え、その先にあるLQR（最適レギュレータ）やスイングアップ制御、シミュレーションの数値積分まで、定番の文献を欧文・和文あわせて選びました。</p>
+    <h3>欧文文献</h3>
     <ol class="ref-list">
       <li><span class="numb">[1]</span><div class="ref-cite">
         K. J. Åström, R. M. Murray. <i>Feedback Systems: An Introduction for Scientists and Engineers</i>, 2nd ed. Princeton University Press, 2021.
@@ -514,6 +517,29 @@ footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-si
         <a href="https://doi.org/10.1007/3-540-30666-8" target="_blank" rel="noopener">doi:10.1007/3-540-30666-8</a>
         <div class="ref-tags"><span>数値シミュレーション</span><span>シンプレクティック積分</span></div>
         <div class="ref-why">本ラボは速度→位置の順に更新する半陰的（シンプレクティック）オイラー法を Δt=1/120 s で用いています。陽的オイラー法よりエネルギーが暴走しにくい理由を、この本の第I章で確かめられます。</div>
+      </div></li>
+    </ol>
+    <h3>和文文献</h3>
+    <ol class="ref-list">
+      <li><span class="numb">[6]</span><div class="ref-cite">
+        川田昌克 編著，東 俊一，市原裕之，浦久保孝光，大塚敏之，甲斐健也，國松禎明，澤田賢治，永原正章，南 裕樹 共著. <i>倒立振子で学ぶ制御工学</i>. 森北出版, 2017. ISBN 978-4-627-79221-0
+        <div class="ref-tags"><span>PID</span><span>状態空間モデル</span><span>非線形制御</span></div>
+        <div class="ref-why">倒立振子ひとつを題材に、モデリング・PID制御・状態空間表現から現代制御、非線形制御などの発展的手法までを通して学べる和書。出版社サポートページで MATLAB/Simulink のプログラムが公開されています。</div>
+      </div></li>
+      <li><span class="numb">[7]</span><div class="ref-cite">
+        杉江俊治，藤田政之. <i>フィードバック制御入門</i>（システム制御工学シリーズ 3）. コロナ社, 1999. ISBN 978-4-339-03303-8
+        <div class="ref-tags"><span>PID</span><span>古典制御</span></div>
+        <div class="ref-why">伝達関数・安定性・周波数応答・PID補償を丁寧に扱う、大学の制御工学講義で広く使われる定番教科書。このラボのゲイン調整で見た「発振」「静定」を理論面から裏づけられます。</div>
+      </div></li>
+      <li><span class="numb">[8]</span><div class="ref-cite">
+        小郷 寛，美多 勉. <i>システム制御理論入門</i>（実教理工学全書）. 実教出版, 1979. ISBN 4-407-02205-1
+        <div class="ref-tags"><span>状態空間モデル</span><span>LQR</span></div>
+        <div class="ref-why">状態方程式・可制御性・オブザーバ・最適レギュレータといった現代制御の基礎を体系立てて解説した古典的和書。LQR（最適レギュレータ）を日本語で学ぶ入口になります。</div>
+      </div></li>
+      <li><span class="numb">[9]</span><div class="ref-cite">
+        齊藤宣一. <i>数値解析入門</i>（大学数学の入門 9）. 東京大学出版会, 2012. ISBN 978-4-13-062959-1
+        <div class="ref-tags"><span>数値シミュレーション</span><span>常微分方程式</span></div>
+        <div class="ref-why">オイラー法やルンゲ・クッタ法など常微分方程式の数値解法を、誤差評価とあわせて扱う日本語の入門書。刻み幅 Δt がシミュレーション精度にどう効くかを確かめるのに向きます。</div>
       </div></li>
     </ol>
   </div>
