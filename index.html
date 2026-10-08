@@ -217,6 +217,22 @@ input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:3
 .try div{font-size:12.5px;color:var(--ink-2);padding-left:20px;position:relative}
 .try div::before{content:"▸";position:absolute;left:2px;color:var(--accent)}
 footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);line-height:1.6}
+.refs{margin-top:clamp(14px,2vw,20px);padding:22px clamp(16px,3vw,30px)}
+.refs h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(1.15rem,2.4vw,1.35rem);margin-bottom:6px}
+.refs .sub{color:var(--muted);font-size:.9rem;margin-bottom:16px;max-width:70ch}
+.ref-list{list-style:none;display:grid;gap:14px}
+.ref-list li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;padding-top:14px;border-top:1px solid var(--line)}
+.ref-list li:first-child{border-top:none;padding-top:0}
+.ref-list .numb{font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:12px;padding-top:2px}
+.ref-cite{font-size:12.5px;color:var(--ink-2);line-height:1.6;overflow-wrap:anywhere}
+.ref-cite i{font-family:"Fraunces",Georgia,serif;font-style:italic;color:var(--ink)}
+.ref-cite a{color:var(--accent);font-family:"IBM Plex Mono",monospace;font-size:11.5px;text-decoration:none}
+.ref-cite a:hover{text-decoration:underline}
+.ref-tags{display:flex;flex-wrap:wrap;gap:5px;margin:5px 0 3px}
+.ref-tags span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.04em;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:1px 7px}
+.ref-why{font-size:12px;color:var(--muted);line-height:1.55}
+.refs h3{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:22px 0 12px;padding-top:16px;border-top:1px solid var(--line)}
+.refs h3:first-of-type{margin-top:0;padding-top:0;border-top:none}
 
 /* 4パネル整列 */
 @media (min-width:760px) and (max-width:1199px){
@@ -466,6 +482,66 @@ footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-si
       Q学習は状態を162マスに離散化した表形式で、ブラウザ内でリアルタイムに学習しています。ニューラルネットは使用していません。
       PIDのゲインはこのモデル専用で、実機の値とは一致しません。
     </footer>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="panel refs">
+    <h2>参考文献 — さらに深く学ぶために</h2>
+    <p class="sub">このラボで扱ったPID・状態空間モデルに加え、その先にあるLQR（最適レギュレータ）やスイングアップ制御、シミュレーションの数値積分まで、定番の文献を欧文・和文あわせて選びました。</p>
+    <h3>欧文文献</h3>
+    <ol class="ref-list">
+      <li><span class="numb">[1]</span><div class="ref-cite">
+        K. J. Åström, R. M. Murray. <i>Feedback Systems: An Introduction for Scientists and Engineers</i>, 2nd ed. Princeton University Press, 2021.
+        <div class="ref-tags"><span>PID</span><span>状態空間モデル</span><span>LQR</span></div>
+        <div class="ref-why">フィードバック制御の標準的入門書。倒立振子（カート上の振子）を通しの例題に、線形化・状態空間表現・状態フィードバック・PIDまでを一冊で学べます。著者サイトで草稿版が公開されています。</div>
+      </div></li>
+      <li><span class="numb">[2]</span><div class="ref-cite">
+        B. D. O. Anderson, J. B. Moore. <i>Optimal Control: Linear Quadratic Methods</i>. Prentice Hall, 1990（Dover 復刊 2007）.
+        <div class="ref-tags"><span>LQR</span><span>リッカチ方程式</span></div>
+        <div class="ref-why">二次形式評価関数を最小化する最適レギュレータ（LQR）の古典的教科書。PIDの手調整に代わり、重みQ・Rからゲインを体系的に決める考え方の土台です。</div>
+      </div></li>
+      <li><span class="numb">[3]</span><div class="ref-cite">
+        K. J. Åström, K. Furuta. Swinging up a pendulum by energy control. <i>Automatica</i>, 36(2), 287–295, 2000.
+        <a href="https://doi.org/10.1016/S0005-1098(99)00140-5" target="_blank" rel="noopener">doi:10.1016/S0005-1098(99)00140-5</a>
+        <div class="ref-tags"><span>スイングアップ</span><span>エネルギー制御</span></div>
+        <div class="ref-why">真下に垂れた振子を、力学的エネルギーを目標値へ近づける非線形制御で振り上げる手法。倒立付近では線形制御（PID/LQR）に切り替える「振り上げ＋安定化」構成の代表的論文です。</div>
+      </div></li>
+      <li><span class="numb">[4]</span><div class="ref-cite">
+        A. G. Barto, R. S. Sutton, C. W. Anderson. Neuronlike adaptive elements that can solve difficult learning control problems. <i>IEEE Transactions on Systems, Man, and Cybernetics</i>, SMC-13(5), 834–846, 1983.
+        <a href="https://doi.org/10.1109/TSMC.1983.6313077" target="_blank" rel="noopener">doi:10.1109/TSMC.1983.6313077</a>
+        <div class="ref-tags"><span>カートポール力学</span><span>学習制御</span></div>
+        <div class="ref-why">本ラボの物理モデル（運動方程式・パラメータ・転倒判定）の出典。カートポールを学習制御のベンチマークとして定着させた論文で、OpenAI Gym CartPole もこの式に基づきます。</div>
+      </div></li>
+      <li><span class="numb">[5]</span><div class="ref-cite">
+        E. Hairer, C. Lubich, G. Wanner. <i>Geometric Numerical Integration: Structure-Preserving Algorithms for Ordinary Differential Equations</i>, 2nd ed. Springer, 2006.
+        <a href="https://doi.org/10.1007/3-540-30666-8" target="_blank" rel="noopener">doi:10.1007/3-540-30666-8</a>
+        <div class="ref-tags"><span>数値シミュレーション</span><span>シンプレクティック積分</span></div>
+        <div class="ref-why">本ラボは速度→位置の順に更新する半陰的（シンプレクティック）オイラー法を Δt=1/120 s で用いています。陽的オイラー法よりエネルギーが暴走しにくい理由を、この本の第I章で確かめられます。</div>
+      </div></li>
+    </ol>
+    <h3>和文文献</h3>
+    <ol class="ref-list">
+      <li><span class="numb">[6]</span><div class="ref-cite">
+        川田昌克 編著，東 俊一，市原裕之，浦久保孝光，大塚敏之，甲斐健也，國松禎明，澤田賢治，永原正章，南 裕樹 共著. <i>倒立振子で学ぶ制御工学</i>. 森北出版, 2017. ISBN 978-4-627-79221-0
+        <div class="ref-tags"><span>PID</span><span>状態空間モデル</span><span>非線形制御</span></div>
+        <div class="ref-why">倒立振子ひとつを題材に、モデリング・PID制御・状態空間表現から現代制御、非線形制御などの発展的手法までを通して学べる和書。出版社サポートページで MATLAB/Simulink のプログラムが公開されています。</div>
+      </div></li>
+      <li><span class="numb">[7]</span><div class="ref-cite">
+        杉江俊治，藤田政之. <i>フィードバック制御入門</i>（システム制御工学シリーズ 3）. コロナ社, 1999. ISBN 978-4-339-03303-8
+        <div class="ref-tags"><span>PID</span><span>古典制御</span></div>
+        <div class="ref-why">伝達関数・安定性・周波数応答・PID補償を丁寧に扱う、大学の制御工学講義で広く使われる定番教科書。このラボのゲイン調整で見た「発振」「静定」を理論面から裏づけられます。</div>
+      </div></li>
+      <li><span class="numb">[8]</span><div class="ref-cite">
+        小郷 寛，美多 勉. <i>システム制御理論入門</i>（実教理工学全書）. 実教出版, 1979. ISBN 4-407-02205-1
+        <div class="ref-tags"><span>状態空間モデル</span><span>LQR</span></div>
+        <div class="ref-why">状態方程式・可制御性・オブザーバ・最適レギュレータといった現代制御の基礎を体系立てて解説した古典的和書。LQR（最適レギュレータ）を日本語で学ぶ入口になります。</div>
+      </div></li>
+      <li><span class="numb">[9]</span><div class="ref-cite">
+        齊藤宣一. <i>数値解析入門</i>（大学数学の入門 9）. 東京大学出版会, 2012. ISBN 978-4-13-062959-1
+        <div class="ref-tags"><span>数値シミュレーション</span><span>常微分方程式</span></div>
+        <div class="ref-why">オイラー法やルンゲ・クッタ法など常微分方程式の数値解法を、誤差評価とあわせて扱う日本語の入門書。刻み幅 Δt がシミュレーション精度にどう効くかを確かめるのに向きます。</div>
+      </div></li>
+    </ol>
   </div>
 </div>
 
